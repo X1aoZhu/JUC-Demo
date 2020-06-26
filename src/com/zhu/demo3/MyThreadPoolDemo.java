@@ -14,25 +14,24 @@ import java.util.concurrent.*;
 public class MyThreadPoolDemo {
     public static void main(String[] args) {
 
-//        System.out.println(Runtime.getRuntime().availableProcessors());
-//
-//        ThreadPoolExecutor poolExecutor = new ThreadPoolExecutor(2,
-//                Runtime.getRuntime().availableProcessors()+1, 2L, TimeUnit.SECONDS,
-//                new LinkedBlockingQueue<>(3),
-//                Executors.defaultThreadFactory(),
-//                new ThreadPoolExecutor.CallerRunsPolicy()
-//        );
-//
-//        try {
-//            for (int i = 1; i <= 11; i++) {
-//                poolExecutor.execute(() -> System.out.println(Thread.currentThread().getName() + "\t受理业务"));
-//            }
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        } finally {
-//            poolExecutor.shutdown();
-//        }
-        threadPoolTest();
+        System.out.println(Runtime.getRuntime().availableProcessors());
+
+        ThreadPoolExecutor poolExecutor = new ThreadPoolExecutor(2,
+                Runtime.getRuntime().availableProcessors() + 1, 2L, TimeUnit.SECONDS,
+                new LinkedBlockingQueue<>(3),
+                Executors.defaultThreadFactory(),
+                new ThreadPoolExecutor.AbortPolicy()
+        );
+
+        try {
+            for (int i = 1; i <= 7; i++) {
+                poolExecutor.execute(() -> System.out.println(Thread.currentThread().getName() + "\t受理业务"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            poolExecutor.shutdown();
+        }
     }
 
     private static void threadPoolTest() {

@@ -2,6 +2,8 @@ package com.zhu.demo3;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
 
 /**
  * JUC异步回调
@@ -27,10 +29,29 @@ public class CompletableFutureDemo {
          */
         CompletableFuture<Integer> completableFuture1 = CompletableFuture.supplyAsync(() -> {
             System.out.println(Thread.currentThread().getName() + "\tCompletableFuture execute supplyAsync");
-            // int num = 10 / 0;
+//            int num = 10 / 1;
             return 1024;
         });
 
+
+//        completableFuture1.whenComplete(new BiConsumer<Integer, Throwable>() {
+//            @Override
+//            public void accept(Integer integer, Throwable throwable) {
+//                System.out.println("whenComplete, accept:" + integer);
+//                System.out.println("whenComplete, throwable: " + throwable);
+//            }
+//        });
+
+
+//        System.out.println(completableFuture1.whenComplete((integer, throwable) -> {
+//            System.out.println("whenComplete, integer: " + integer);
+//            System.out.println("whenComplete, throwable: " + throwable);
+//        }).exceptionally(throwable -> {
+//            System.out.println("whenComplete exceptionally, message: " + throwable);
+//            return 2020;
+//        }).get());
+//
+//
         System.out.println(completableFuture1.whenComplete((t, u) -> {
             System.out.println("whenComplete, t: " + t);
             System.out.println("whenComplete, u: " + u);
