@@ -4,8 +4,8 @@
 #### JUC 知识点总结
 # 写在前面
 
-1. 依照 JUC-周阳版本
-2. 源码 GITHUB 地址：[源码地址][https://github.com/X1aoZhu/JUC-Demo][][]
+
+1. 源码 GITHUB 地址：[源码地址][https://github.com/X1aoZhu/JUC-Demo][][]
 
 ---
 
